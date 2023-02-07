@@ -17,6 +17,8 @@ internal class Program
 
         //AddTicket(); //добавление билета в методе
 
+        //EditTicketName(); //не доделал
+
         foreach (var item in ef.Tickets.Include(x =>x.Passanger).Include(x => x.PointArrival).Include(x => x.PointDeparture).ToList())
         {
             Console.WriteLine($"{item?.IdTicket}, {item.Passanger?.Name}, {item.PointDeparture?.Value}-{item.PointArrival?.Value}, время отправления - {item.DateArrive}");
@@ -72,6 +74,21 @@ internal class Program
 
             ef.Add(ticket);
         }
+
+        //void EditTicketName()
+        //{
+        //    Console.WriteLine("Введите имя, которое нужно изменить");
+        //    var OldName = ef.Passangers.FirstOrDefault(x => x.Name == Console.ReadLine());
+
+        //    if(OldName != null)
+        //    {
+        //        Console.WriteLine("Введите новое имя");
+        //        foreach (var item3 in ef.Tickets.Include(x => x.Passanger))
+        //        {
+        //            item3.Passanger.Name = Console.ReadLine();
+        //        }
+        //    }
+        //}
 
     }
 
