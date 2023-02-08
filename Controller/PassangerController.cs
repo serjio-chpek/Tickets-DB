@@ -37,8 +37,9 @@ namespace ConsoleApp21.Controller
                     Console.WriteLine("Введите новое имя");
                     OldName.Name = Console.ReadLine();
                 }
+            
+            //ef.Update(OldName);
             ef.SaveChanges();
-            ef.Update(OldName);
         }
     }
 }
