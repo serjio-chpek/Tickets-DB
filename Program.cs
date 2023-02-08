@@ -1,4 +1,5 @@
-﻿using ConsoleApp21.Models;
+﻿using ConsoleApp21.Controller;
+using ConsoleApp21.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Channels;
 
@@ -6,7 +7,13 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        ApplicationContext ef = new ApplicationContext();
+
+        PassangerController t = new PassangerController();
+        //t.AddPassanger();
+        t.EditPassangerName();
+
+
+        //ApplicationContext ef = new ApplicationContext();
 
         //RemovePassanger(); //удаление в метод засунул
 
@@ -19,68 +26,68 @@ internal class Program
 
         //EditTicketName(); //не доделал
 
-        foreach (var item in ef.Tickets.Include(x =>x.Passanger).Include(x => x.PointArrival).Include(x => x.PointDeparture).ToList())
-        {
-            Console.WriteLine($"{item?.IdTicket}, {item.Passanger?.Name}, {item.PointDeparture?.Value}-{item.PointArrival?.Value}, время отправления - {item.DateArrive}");
-        }
+        //foreach (var item in ef.Tickets.Include(x =>x.Passanger).Include(x => x.PointArrival).Include(x => x.PointDeparture).ToList())
+        //{
+        //    Console.WriteLine($"{item?.IdTicket}, {item.Passanger?.Name}, {item.PointDeparture?.Value}-{item.PointArrival?.Value}, время отправления - {item.DateArrive}");
+        //}
 
-        ef.SaveChanges();
+        //ef.SaveChanges();
 
 
-        void RemovePassanger() //удаление билета по имени
-        {
-            Console.WriteLine("Введите имя для удаления билета");
-            string NameToRemove = Console.ReadLine();
+        //void RemovePassanger() //удаление билета по имени
+        //{
+        //    Console.WriteLine("Введите имя для удаления билета");
+        //    string NameToRemove = Console.ReadLine();
 
-            foreach (var item1 in ef.Tickets.Include(x => x.Passanger))
-            {
-                if (item1.Passanger.Name == NameToRemove)
-                {
-                    ef.Remove(item1);
-                }
-            }
-        }
+        //    foreach (var item1 in ef.Tickets.Include(x => x.Passanger))
+        //    {
+        //        if (item1.Passanger.Name == NameToRemove)
+        //        {
+        //            ef.Remove(item1);
+        //        }
+        //    }
+        //}
 
-        void AddPassanger(string Name, string Phone) //добавление пассажира
-        {
-            Passanger passanger = new Passanger()
-            {
-                Name = Name,
-                Phone = Phone
-            };
+        //void AddPassanger(string Name, string Phone) //добавление пассажира
+        //{
+        //    Passanger passanger = new Passanger()
+        //    {
+        //        Name = Name,
+        //        Phone = Phone
+        //    };
 
-            ef.Add(passanger);
-        }
+        //    ef.Add(passanger);
+        //}
 
-        void AddPoint() //добавление города
-        {
-            Console.WriteLine("Введите название города");
+        //void AddPoint() //добавление города
+        //{
+        //    Console.WriteLine("Введите название города");
 
-            Point point = new Point() { Value = Console.ReadLine() };
+        //    Point point = new Point() { Value = Console.ReadLine() };
 
-            ef.Add(point);
-        }
+        //    ef.Add(point);
+        //}
 
-        void AddTicket() //добавление билета
-        {
-            Console.WriteLine("Напишите имя, город отправления и город прибытия");
-            Ticket ticket = new Ticket()
-            {
-                Passanger = ef.Passangers.FirstOrDefault(x => x.Name == Console.ReadLine()),
-                PointDeparture = ef.Points.FirstOrDefault(x => x.Value == Console.ReadLine()),
-                PointArrival = ef.Points.FirstOrDefault(x => x.Value == Console.ReadLine()),
-                DateArrive = DateTime.Now.AddHours(6)
-            };
+        //void AddTicket() //добавление билета
+        //{
+        //    Console.WriteLine("Напишите имя, город отправления и город прибытия");
+        //    Ticket ticket = new Ticket()
+        //    {
+        //        Passanger = ef.Passangers.FirstOrDefault(x => x.Name == Console.ReadLine()),
+        //        PointDeparture = ef.Points.FirstOrDefault(x => x.Value == Console.ReadLine()),
+        //        PointArrival = ef.Points.FirstOrDefault(x => x.Value == Console.ReadLine()),
+        //        DateArrive = DateTime.Now.AddHours(6)
+        //    };
 
-            ef.Add(ticket);
-        }
+        //    ef.Add(ticket);
+        //}
 
         //void EditTicketName()
         //{
         //    Console.WriteLine("Введите имя, которое нужно изменить");
         //    var OldName = ef.Passangers.FirstOrDefault(x => x.Name == Console.ReadLine());
 
-        //    if(OldName != null)
+        //    if (OldName != null)
         //    {
         //        Console.WriteLine("Введите новое имя");
         //        foreach (var item3 in ef.Tickets.Include(x => x.Passanger))
