@@ -22,7 +22,8 @@ internal class Program
                 "\n2-изменить имя пассажира" +
                 "\n3-добавить билет" +
                 "\n4-удалить билет" +
-                "\n5-добавить город");
+                "\n5-добавить город"+
+                "\n6-показать пассажиров");
             int i = Convert.ToInt32(Console.ReadLine());
             if (i == 1)
             {
@@ -48,6 +49,11 @@ internal class Program
             {
                 PointController pointcontrol = new PointController();
                 pointcontrol.AddPoint();
+            }
+            else if (i == 6)
+            {
+                PassangerController pascontrol = new PassangerController();
+                pascontrol.ShowPassangers();
             }
             Console.WriteLine("Напишите дальше или стоп для продолжения или остановки программы соответственно");
             menu = Console.ReadLine();

@@ -41,5 +41,12 @@ namespace ConsoleApp21.Controller
             //ef.Update(OldName);
             ef.SaveChanges();
         }
+        public void ShowPassangers()
+        {
+            foreach (var item in ef.Tickets.Include(x => x.Passanger).Include(x => x.PointArrival).Include(x => x.PointDeparture).ToList())
+            {
+                Console.WriteLine($"{item?.IdTicket}, {item.Passanger?.Name}, {item.PointDeparture?.Value}-{item.PointArrival?.Value}, время отправления - {item.DateArrive}");
+            }
+        }
     }
 }

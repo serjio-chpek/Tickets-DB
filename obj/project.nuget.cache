@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LvGMHNDrHyHBVJCRD7iBKJdEXn1OhLfYiO0Apqj9sMRRPH9+gUGB8KLV3tJuDqxg0o2I2Q7Vko58JanOaUvtGQ==",
+  "dgSpecHash": "i1xfUpVHgbuqHk7nEyM2AIBcinNEzCpD+n1V6CwEWrbzSwFXONzDJDow86Fm9jCkkpvPyeGqNGRe2/pHjkFjqw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\SerjP\\Source\\Repos\\Tickets-DB\\ConsoleApp21.csproj",
+  "projectFilePath": "C:\\Users\\SerjP\\source\\repos\\беброу\\ConsoleApp21.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\SerjP\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\SerjP\\.nuget\\packages\\microsoft.data.sqlite.core\\7.0.2\\microsoft.data.sqlite.core.7.0.2.nupkg.sha512",
